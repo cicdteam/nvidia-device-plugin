@@ -20,12 +20,12 @@ It installs the following from web sources.
 
 ```bash
 
-$ kops version
+kops version
 Version 1.15.0 (git-9992b4055)
 
-$ export KOPS_STATE_STORE=s3://some-s3-backet-name
+export KOPS_STATE_STORE=s3://some-s3-backet-name
 
-$ kops create cluster \
+kops create cluster \
     --cloud aws \
     --zones eu-west-1a,eu-west-1b,eu-west-1c \
     --master-zones eu-west-1a \
@@ -42,7 +42,7 @@ $ kops create cluster \
 This should be safe to do for all machines, because the hook auto-detects if the machine has NVIDIA GPU installed and will NO-OP otherwise.
 
 ```yaml
-$ kops edit ig --name=gpu.k8s.local nodes
+kops edit ig --name=gpu.k8s.local nodes
 
 spec:
   hooks:
@@ -54,21 +54,21 @@ spec:
 #### Update the cluster
 
 ```bash
-$ kops update cluster --name gpu.k8s.local --yes
-$ while ! kops validate cluster --name gpu.k8s.local; do sleep 10; done
+kops update cluster --name gpu.k8s.local --yes
+while ! kops validate cluster --name gpu.k8s.local; do sleep 10; done
 
 ```
 
 #### Deploy the Daemonset for the Nvidia DevicePlugin
 
 ```bash
-$ kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/1.0.0-beta4/nvidia-device-plugin.yml
+kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/1.0.0-beta4/nvidia-device-plugin.yml
 ```
 
 #### Check Node capacity for `nvidia.com/gpu`
 
-```bash
-$ kubectl get no -l beta.kubernetes.io/instance-type=g4dn.xlarge -ojson | jq '.items[].status.capacity'
+```json
+kubectl get no -l beta.kubernetes.io/instance-type=g4dn.xlarge -ojson | jq '.items[].status.capacity'
 {
   "attachable-volumes-aws-ebs": "39",
   "cpu": "4",
@@ -87,7 +87,7 @@ $ kubectl get no -l beta.kubernetes.io/instance-type=g4dn.xlarge -ojson | jq '.i
 #### Deploy a Test Pod
 
 ```bash
-$ cat << EOF | kubectl create -f -
+cat << EOF | kubectl create -f -
 apiVersion: v1
 kind: Pod
 metadata:
@@ -111,8 +111,8 @@ EOF
 
 #### Show GPU info from within the pod
 
-```bash
-$ kubectl exec -it tf-gpu -- nvidia-smi
+```
+kubectl exec -it tf-gpu -- nvidia-smi
 
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 440.33.01    Driver Version: 440.33.01    CUDA Version: 10.2     |
@@ -135,8 +135,8 @@ $ kubectl exec -it tf-gpu -- nvidia-smi
 
 ####  Show Tensorflow detects GPUs from within the pod
 
-```bash
-$ kubectl exec -it tf-gpu -- python -c 'from tensorflow.python.client import device_lib; print(device_lib.list_local_devices())'
+```
+kubectl exec -it tf-gpu -- python -c 'from tensorflow.python.client import device_lib; print(device_lib.list_local_devices())'
 
 [name: "/device:CPU:0"
 device_type: "CPU"
@@ -175,7 +175,7 @@ physical_device_desc: "device: 0, name: Tesla T4, pci bus id: 0000:00:1e.0, comp
 #### Detele Test Pod
 
 ```bash
-$ kubectl delete pod tf-gpu
+kubectl delete pod tf-gpu
 
 ```
 
@@ -184,5 +184,5 @@ $ kubectl delete pod tf-gpu
 Running a Kubernetes cluster within AWS obviously costs money, and so you may want to delete your cluster if you are finished running experiments.
 
 ```bash
-$ kops delete cluster --name gpu.k8s.local --yes
+kops delete cluster --name gpu.k8s.local --yes
 ```
