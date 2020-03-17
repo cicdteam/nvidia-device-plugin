@@ -21,7 +21,7 @@ It installs the following from web sources.
 ```bash
 
 kops version
-Version 1.15.0 (git-9992b4055)
+Version 1.16.0 (git-4b0e62b82)
 
 export KOPS_STATE_STORE=s3://some-s3-backet-name
 
@@ -115,7 +115,7 @@ EOF
 kubectl exec -it tf-gpu -- nvidia-smi
 
 +-----------------------------------------------------------------------------+
-| NVIDIA-SMI 440.33.01    Driver Version: 440.33.01    CUDA Version: 10.2     |
+| NVIDIA-SMI 440.64.00    Driver Version: 440.64.00    CUDA Version: 10.2     |
 |-------------------------------+----------------------+----------------------+
 | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
