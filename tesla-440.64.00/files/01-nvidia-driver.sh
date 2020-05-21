@@ -40,8 +40,10 @@ CACHE_DIR=/nvidia-device-plugin
 # M60, M40 24GB, M40, M6, M4
 
 
-driver_file="http://us.download.nvidia.com/tesla/440.64.00/NVIDIA-Linux-x86_64-440.64.00.run"
-driver_md5sum="b1dfbb3f36490352ffb5e59ed251fda1"
+#driver_file="http://us.download.nvidia.com/tesla/440.64.00/NVIDIA-Linux-x86_64-440.64.00.run"
+#driver_md5sum="b1dfbb3f36490352ffb5e59ed251fda1"
+driver_file="http://us.download.nvidia.com/tesla/418.126.02/NVIDIA-Linux-x86_64-418.126.02.run"
+driver_md5sum="7fa3be61ac62fcac610eb903db6e630d"
 
 apt-get -y update
 apt-get -y install pciutils curl

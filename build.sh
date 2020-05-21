@@ -2,7 +2,7 @@
 
 set -e
 
-IMAGE='pure/nvidia-device-plugin'
+IMAGE='viaductai/nvidia-device-plugin'
 
 for d in $(find . -mindepth 1 -maxdepth 1 -type d -iname 'tesla*'); do
     TAG=$(basename "$d")

@@ -19,8 +19,6 @@ cat << 'EOF' > /etc/docker/daemon.json
 }
 EOF
 
-# Stop protokube to ensure not bring kubelet up again
-systemctl stop protokube
 # Stop kubelet to ensure not bring stopped containers up again and leak
 # them as orphan containers
 systemctl stop kubelet
@@ -38,5 +36,5 @@ systemctl mask cloud-init.service
 systemctl mask kops-configuration.service
 
 # Restore protokube and protokube will bring up kubelet
-systemctl start protokube
+#systemctl start protokube
 systemctl start kubelet
