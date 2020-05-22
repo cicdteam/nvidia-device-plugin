@@ -14,6 +14,13 @@ It installs the following from web sources.
 * The systemd unit `nvidia-device-plugin.service` runs and executes the setup scripts in the host directory `/nvidia-device-plugin`.
 * The scripts install the Nvidia device drivers and Nvidia docker.
 
+### AWS EC2 instances types
+
+- P3 - Up to 8 NVIDIA Tesla V100 GPUs - latest NVIDIA driver version: 440.64.00 (CUDA 10.2)
+- P2 - High-performance NVIDIA K80 GPUs - latest NVIDIA driver version: 440.64.00 (CUDA 10.2)
+- G4 - NVIDIA T4 Tensor Core GPUs - latest NVIDIA driver version: 440.64.00 (CUDA 10.2)
+- G3 - NVIDIA Tesla M60 GPUs - latest NVIDIA driver version: 440.64.00 (CUDA 10.2)
+
 ### Using this DevicePlugin
 
 #### Create a Cluster with GPU Nodes
@@ -21,7 +28,7 @@ It installs the following from web sources.
 ```bash
 
 kops version
-Version 1.16.0 (git-4b0e62b82)
+Version 1.16.2 (git-f5093e414)
 
 export KOPS_STATE_STORE=s3://some-s3-backet-name
 
@@ -62,7 +69,7 @@ while ! kops validate cluster --name gpu.k8s.local; do sleep 10; done
 #### Deploy the Daemonset for the Nvidia DevicePlugin
 
 ```bash
-kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/1.0.0-beta4/nvidia-device-plugin.yml
+kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/1.0.0-beta6/nvidia-device-plugin.yml
 ```
 
 #### Check Node capacity for `nvidia.com/gpu`
@@ -143,30 +150,30 @@ device_type: "CPU"
 memory_limit: 268435456
 locality {
 }
-incarnation: 3121764385910360567
+incarnation: 11656700883399316688
 , name: "/device:XLA_CPU:0"
 device_type: "XLA_CPU"
 memory_limit: 17179869184
 locality {
 }
-incarnation: 18396904841851242797
+incarnation: 7295783748576163833
 physical_device_desc: "device: XLA_CPU device"
 , name: "/device:XLA_GPU:0"
 device_type: "XLA_GPU"
 memory_limit: 17179869184
 locality {
 }
-incarnation: 4503292422335862858
+incarnation: 9367989692071764889
 physical_device_desc: "device: XLA_GPU device"
 , name: "/device:GPU:0"
 device_type: "GPU"
-memory_limit: 14941647668
+memory_limit: 14784367168
 locality {
   bus_id: 1
   links {
   }
 }
-incarnation: 6949372932394118638
+incarnation: 7827043035974526440
 physical_device_desc: "device: 0, name: Tesla T4, pci bus id: 0000:00:1e.0, compute capability: 7.5"
 ]
 
