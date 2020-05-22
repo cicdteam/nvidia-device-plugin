@@ -1,4 +1,4 @@
-## `kops` hook for NVIDIA GPU Driver and DevicePlugin Installation
+## Most recent `kops` hook for NVIDIA GPU Driver and DevicePlugin Installation
 
 This kops hook container may be used to enable nodes with GPUs to work with Kubernetes.
 
