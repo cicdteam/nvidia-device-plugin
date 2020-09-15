@@ -44,7 +44,7 @@ driver_file="http://us.download.nvidia.com/tesla/440.64.00/NVIDIA-Linux-x86_64-4
 driver_md5sum="b1dfbb3f36490352ffb5e59ed251fda1"
 
 apt-get -y update
-apt-get -y install pciutils curl
+apt-get -y install pciutils curl make
 
 #################################################
 # Ensure that we are have NVIDIA GPU card in system

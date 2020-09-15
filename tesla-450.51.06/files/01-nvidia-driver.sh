@@ -9,19 +9,26 @@ set -euo pipefail
 CACHE_DIR=/nvidia-device-plugin
 
 # http://www.nvidia.com/Download/index.aspx
-#
+
 # NVIDIA driver
 #
-# Version:          440.31
-# Release Date:     2019.11.4
+# Version:          450.51.06
+# Release Date:     2020.7.28
 # Operating System: Linux 64-bit
+# CUDA Toolkit:     11.0
 # Language:         English (US)
-# File Size:        134.96 MB
-
+# File Size:        136.47 MB
+#
 # SUPPORTED PRODUCTS
 #
+# A-Series:
+# NVIDIA A100
+#
+# RTX-Series:
+# RTX 8000, RTX 6000
+#
 # HGX-Series:
-# HGX-2
+# HGX A100, HGX-2
 #
 # T-Series:
 # Tesla T4
@@ -38,8 +45,8 @@ CACHE_DIR=/nvidia-device-plugin
 # M-Class:
 # M60, M40 24GB, M40, M6, M4
 
-driver_file="http://us.download.nvidia.com/tesla/440.33.01/NVIDIA-Linux-x86_64-440.33.01.run"
-driver_md5sum="d459669e933054d65142799b82441263"
+driver_file="http://us.download.nvidia.com/tesla/450.51.06/NVIDIA-Linux-x86_64-450.51.06.run"
+driver_md5sum="e4d09f06bcca9bd7c15364d5ef7dcdf6"
 
 apt-get -y update
 apt-get -y install pciutils curl make

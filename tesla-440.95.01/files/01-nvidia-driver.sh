@@ -9,15 +9,16 @@ set -euo pipefail
 CACHE_DIR=/nvidia-device-plugin
 
 # http://www.nvidia.com/Download/index.aspx
-#
+
 # NVIDIA driver
 #
-# Version:          440.31
-# Release Date:     2019.11.4
+# Version:          440.95.01
+# Release Date:     2020.6.24
 # Operating System: Linux 64-bit
+# CUDA Toolkit:     10.2
 # Language:         English (US)
-# File Size:        134.96 MB
-
+# File Size:        137 MB
+#
 # SUPPORTED PRODUCTS
 #
 # HGX-Series:
@@ -38,8 +39,8 @@ CACHE_DIR=/nvidia-device-plugin
 # M-Class:
 # M60, M40 24GB, M40, M6, M4
 
-driver_file="http://us.download.nvidia.com/tesla/440.33.01/NVIDIA-Linux-x86_64-440.33.01.run"
-driver_md5sum="d459669e933054d65142799b82441263"
+driver_file="http://us.download.nvidia.com/tesla/440.95.01/NVIDIA-Linux-x86_64-440.95.01.run"
+driver_md5sum="019d6fd997a972728695faf5c804712a"
 
 apt-get -y update
 apt-get -y install pciutils curl make
