@@ -23,13 +23,6 @@ CUDA Toolkit:     11.0
 * The systemd unit `nvidia-device-plugin.service` runs and executes the setup scripts in the host directory `/nvidia-device-plugin`.
 * The scripts install the Nvidia device drivers and Nvidia docker.
 
-### AWS EC2 instances types
-
-- P3 - Up to 8 NVIDIA Tesla V100 GPUs - latest NVIDIA driver version: 440.64.00 (CUDA 10.2)
-- P2 - High-performance NVIDIA K80 GPUs - latest NVIDIA driver version: 440.64.00 (CUDA 10.2)
-- G4 - NVIDIA T4 Tensor Core GPUs - latest NVIDIA driver version: 440.64.00 (CUDA 10.2)
-- G3 - NVIDIA Tesla M60 GPUs - latest NVIDIA driver version: 440.64.00 (CUDA 10.2)
-
 ### Using this DevicePlugin
 
 #### Create a Cluster with GPU Nodes
